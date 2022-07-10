@@ -1,4 +1,6 @@
 import React from 'react'
+import { NextPage } from 'next';
+import { footerList1, footerList2, footerList3 } from '../utils/constants';
 
 const Footer = () => {
   return (
