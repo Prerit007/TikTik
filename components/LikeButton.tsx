@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { MdFavorite } from 'react-icons/md';
 import { NextPage } from 'next';
 
-//import useAuthStore from '../store/authStore';
+import useAuthStore from '../store/authStore';
 
 interface IProps {
   likes: any;
@@ -13,16 +13,16 @@ interface IProps {
 
 const LikeButton: NextPage<IProps> = ({ likes, flex, handleLike, handleDislike }) => {
   const [alreadyLiked, setAlreadyLiked] = useState(false);
-  //const { userProfile }: any = useAuthStore();
-  //let filterLikes = likes?.filter((item: any) => item._ref === userProfile?._id);
+  const { userProfile }: any = useAuthStore();
+  let filterLikes = likes?.filter((item: any) => item._ref === userProfile?._id);
 
-  // useEffect(() => {
-  //   if (filterLikes?.length > 0) {
-  //     setAlreadyLiked(true);
-  //   } else {
-  //     setAlreadyLiked(false);
-  //   }
-  // }, [filterLikes, likes]);
+  useEffect(() => {
+     if (filterLikes?.length > 0) {
+       setAlreadyLiked(true);
+     } else {
+       setAlreadyLiked(false);
+     }
+   }, [filterLikes, likes]);
 
   return (
     <div className={`${flex} gap-6`}>
